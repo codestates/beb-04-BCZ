@@ -1,17 +1,17 @@
-import './App.css';
-import { useState, useEffect } from 'react';
-import Web3 from 'web3';
-import erc721Abi from './erc721Abi'; // 특정 컨트랙트에 있는 함수를 사용하기 위해 컨트랙트의 ABI가 필요함
-import TokenList from './components/TokenList';
+import "./App.css";
+import { useState, useEffect } from "react";
+import Web3 from "web3";
+import erc721Abi from "./erc721Abi"; // 특정 컨트랙트에 있는 함수를 사용하기 위해 컨트랙트의 ABI가 필요함
+import TokenList from "./components/TokenList";
 
 function App() {
-  const [account, setAccount] = useState('');
+  const [account, setAccount] = useState("");
   const [web3, setWeb3] = useState();
   const [newErc721addr, setNewErc721addr] = useState(); // 컨트랙트 주소
   const [erc721list, setErc721list] = useState([]); // 자신의 NFT 정보를 저장할 토큰
 
   useEffect(() => {
-    if (typeof window.ethereum !== 'undefined') {
+    if (typeof window.ethereum !== "undefined") {
       // window.ethereum이 있다면
       try {
         const web = new Web3(window.ethereum); // 새로운 web3 객체를 만든다
@@ -25,7 +25,7 @@ function App() {
   const connectWallet = async () => {
     // 메타마스크 지갑과 연결된 계정 정보를 받는 JSON-RPC Call API
     let accounts = await window.ethereum.request({
-      method: 'eth_requestAccounts',
+      method: "eth_requestAccounts",
     });
 
     setAccount(accounts[0]);
@@ -86,6 +86,9 @@ function App() {
         <button onClick={addNewErc721Token}>add new Erc721</button>
       </div>
       <TokenList erc721list={erc721list} web3={web3} account={account} />
+      <button onClick={() => alert("explore click")}>explore</button>
+      <button onClick={() => alert("create click")}>create</button>
+      <button onClick={() => alert("profile click")}>profile</button>
     </div>
   );
 }
