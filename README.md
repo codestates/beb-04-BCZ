@@ -1,2 +1,2 @@
-# beb-04-first-01
-beb-04-first-01
+# beb-04-BCZ
+NFT 거래 플랫폼
