@@ -1,25 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../App.css";
 
 export default function Header({ isLogin, connectWallet, account }) {
+  const moveExplore = () => {
+    window.location.href = "/list";
+  };
+
   return (
     <div id="Navbar">
-      <nav>
-        <Link to="/">
-          <button>LOGO(main)</button>
-        </Link>
-        <Link to="/list">
-          <button>Explore</button>
-        </Link>
-        <Link to="/create">
-          <button>Create</button>
-        </Link>
-        <Link to="/profile">
-          <button>Profile</button>
-        </Link>
-        <button onClick={() => connectWallet()}>connect to MetaMask</button>
-        {/* // 연결된 계정 주소를 화면에 출력합니다 */}
+      <nav id="nav-list">
+        <li>
+          <NavLink to="/">
+            <button>LOGO(main)</button>
+          </NavLink>
+        </li>
+        <li>
+          {/* <NavLink to="/list"> */}
+          <button onClick={moveExplore}>Explore</button>
+          {/* </NavLink> */}
+        </li>
+        <li>
+          <NavLink to="/create">
+            <button>Create</button>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile">
+            <button>Profile</button>
+          </NavLink>
+        </li>
+        <li>
+          <button onClick={() => connectWallet()}>connect to MetaMask</button>
+          {/* // 연결된 계정 주소를 화면에 출력합니다 */}
+        </li>
         연결된 계정 주소: {account}
       </nav>
     </div>
