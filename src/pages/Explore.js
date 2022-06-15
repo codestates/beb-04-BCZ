@@ -3,31 +3,30 @@ import NftCardList from "../components/NftCardList";
 import erc721Abi from "../erc721Abi";
 import { erc721Addr } from "../erc721Addr";
 
-function Explore({ web3 }) {
-  const [nfts, setNfts] = useState([]);
+function Explore({ web3, nfts, setNfts }) {
   const [total, setTotal] = useState();
 
-  const getNfts = async () => {
-    try {
-      const tokenContract = await new web3.eth.Contract(erc721Abi, erc721Addr);
-      const totalSupply = await tokenContract.methods.totalSupply().call();
-      setTotal(totalSupply);
-      let arr = [];
-      for (let i = 1; i <= totalSupply; i++) {
-        arr.push(i);
-      }
-      for (let tokenId of arr) {
-        let tokenURI = await tokenContract.methods.tokenURI(tokenId).call();
-        setNfts((prevState) => {
-          return [...prevState, { tokenId, tokenURI }];
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
+    const getNfts = async () => {
+      try {
+        const tokenContract = await new web3.eth.Contract(erc721Abi, erc721Addr);
+        const totalSupply = await tokenContract.methods.totalSupply().call();
+        setTotal(totalSupply);
+        let arr = [];
+        for (let i = 1; i <= totalSupply; i++) {
+          arr.push(i);
+        }
+        for (let tokenId of arr) {
+          let tokenURI = await tokenContract.methods.tokenURI(tokenId).call();
+          setNfts((prevState) => {
+            return [...prevState, { tokenId, tokenURI }];
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     if (web3) {
       getNfts();
     }
@@ -37,7 +36,7 @@ function Explore({ web3 }) {
     <div id="asset-list-container">
       <div id="asset-list-body">
         <div id="asset-list-title">Explore...</div>
-        total: {total}
+        <div>total: {total}</div>
         <NftCardList nfts={nfts} web3={web3} />
       </div>
     </div>

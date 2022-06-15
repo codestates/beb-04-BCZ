@@ -12,6 +12,7 @@ import NftCardDetail from "./components/NftCardDetail";
 function App() {
   const [account, setAccount] = useState("");
   const [web3, setWeb3] = useState();
+  const [nfts, setNfts] = useState([]);
   const [isLogin, setIsLogin] = useState(false); // Profile에 필요
 
   // web3 객체 생성
@@ -43,8 +44,8 @@ function App() {
       <Header isLogin={isLogin} connectWallet={connectWallet} account={account} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route exact path="/list" element={<Explore web3={web3} />} />
-        <Route exact path="/list/:tokenId" element={<NftCardDetail web3={web3} />} />
+        <Route exact path="/list" element={<Explore web3={web3} nfts={nfts} setNfts={setNfts} />} />
+        <Route path="/list/:tokenId" element={<NftCardDetail web3={web3} nfts={nfts} />} />
         <Route path="/create" element={<Create account={account} web3={web3} />} />
         <Route path="/profile" element={<Profile web3={web3} />} />
       </Routes>
