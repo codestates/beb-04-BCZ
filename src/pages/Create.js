@@ -3,7 +3,8 @@ import Erc721 from "../components/Erc721";
 import erc721Abi from "../erc721Abi";
 import { erc721Addr } from "../erc721Addr";
 
-function Create({ account, web3, erc721Abi }) {
+function Create({ account, web3 }) {
+  // Abi코드는 바뀌는 상태값이 아니기 때문에 props에서 지우고 import해온 것을 사용했습니다.
   // console.log("web3 = " + web3.tokenURL);
 
   const tokenURL =
@@ -43,30 +44,13 @@ function Create({ account, web3, erc721Abi }) {
     <div>
       <nav>
         <div>
-          <input
-            type="file"
-            id="fileId"
-            name="fileId"
-            onChange={onChangeCreateForm}
-          />
+          <input type="file" id="fileId" name="fileId" onChange={onChangeCreateForm} />
         </div>
         <div>
-          <input
-            id="nftId"
-            type="text"
-            name="nftId"
-            placeholder="NFT-NAME 입력"
-            onChange={onChangeCreateForm}
-          ></input>
+          <input id="nftId" type="text" name="nftId" placeholder="NFT-NAME 입력" onChange={onChangeCreateForm}></input>
         </div>
         <div>
-          <input
-            id="nftDescription"
-            type="text"
-            name="nftDescription"
-            placeholder="Description 입력"
-            onChange={onChangeCreateForm}
-          ></input>
+          <input id="nftDescription" type="text" name="nftDescription" placeholder="Description 입력" onChange={onChangeCreateForm}></input>
         </div>
         <button onClick={onClickMint}>만들기!</button>
       </nav>
