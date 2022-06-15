@@ -3,6 +3,81 @@ import { useState, useEffect } from "react";
 import Web3 from "web3";
 import erc721Abi from "./erc721Abi"; // 특정 컨트랙트에 있는 함수를 사용하기 위해 컨트랙트의 ABI가 필요함
 import TokenList from "./components/TokenList";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+function Home() {
+  return (
+    <div>
+      <nav>
+        <Link to="create">
+          <button>create</button>
+        </Link>
+      </nav>
+    </div>
+  );
+}
+function Create() {
+  const [createForm, setCreateForm] = useState({
+    fileId: "",
+    nftId: "",
+    nftDescription: "",
+  });
+
+  const onChangeCreateForm = (e) => {
+    setCreateForm({
+      ...createForm,
+      [e.target.name]: e.target.value,
+    });
+    console.log("fileId" + createForm.fileId);
+    console.log("nftId" + createForm.nftId);
+    console.log("nftDescription" + createForm.nftDescription);
+  };
+  return (
+    <div>
+      <nav>
+        <div>
+          <input
+            type="file"
+            id="fileId"
+            name="fileId"
+            onChange={onChangeCreateForm}
+          />
+        </div>
+        <div>
+          <input
+            id="nftId"
+            type="text"
+            name="nftId"
+            placeholder="NFT-NAME 입력"
+            onChange={onChangeCreateForm}
+          ></input>
+        </div>
+        <div>
+          <input
+            id="nftDescription"
+            type="text"
+            name="nftDescription"
+            placeholder="Description 입력"
+            onChange={onChangeCreateForm}
+          ></input>
+        </div>
+        <button
+          onClick={() =>
+            alert(
+              createForm.fileId +
+                " // " +
+                createForm.nftId +
+                " // " +
+                createForm.nftDescription
+            )
+          }
+        >
+          만들기!
+        </button>
+      </nav>
+    </div>
+  );
+}
 
 function App() {
   const [account, setAccount] = useState("");
@@ -86,8 +161,14 @@ function App() {
         <button onClick={addNewErc721Token}>add new Erc721</button>
       </div>
       <TokenList erc721list={erc721list} web3={web3} account={account} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<Create />} />
+        </Routes>
+      </BrowserRouter>
       <button onClick={() => alert("explore click")}>explore</button>
-      <button onClick={() => alert("create click")}>create</button>
+      {/* <button onClick={create}>create</button> */}
       <button onClick={() => alert("profile click")}>profile</button>
     </div>
   );
