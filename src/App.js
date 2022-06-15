@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route exact path="/list" element={<Explore web3={web3} />} />
         <Route exact path="/list/:tokenId" element={<NftCardDetail web3={web3} />} />
-        <Route path="/create" element={<Create web3={web3} />} />
+        <Route path="/create" element={<Create account={account} web3={web3} />} />
         <Route path="/profile" element={<Profile web3={web3} />} />
       </Routes>
     </div>
