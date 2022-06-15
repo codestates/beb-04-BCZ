@@ -64,6 +64,7 @@ function App() {
     }
   };
 
+
   return (
     <div className="App">
       <button
@@ -80,7 +81,7 @@ function App() {
         <input
           type="text"
           onChange={(e) => {
-            setNewErc721addr(e.target.value);
+            setNewErc721addr(e.target.value);//입력된 값을 setNewErc721addrd 인자로 받아 와서 주소로 셋팅함
           }}
         ></input>
         <button onClick={addNewErc721Token}>add new Erc721</button>
