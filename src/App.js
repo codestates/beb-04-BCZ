@@ -7,6 +7,7 @@ import Explore from "./pages/Explore";
 import Create from "./pages/Create";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
+import erc721Abi from "./erc721Abi";
 
 function App() {
   const [account, setAccount] = useState("");
@@ -39,11 +40,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header isLogin={isLogin} connectWallet={connectWallet} account={account} />
+      <Header
+        isLogin={isLogin}
+        connectWallet={connectWallet}
+        account={account}
+      />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/list" element={<Explore web3={web3} />} />
-        <Route path="/create" element={<Create web3={web3} />} />
+        <Route
+          path="/create"
+          element={
+            <Create account={account} web3={web3} erc721Abi={erc721Abi} />
+          }
+        />
         <Route path="/profile" element={<Profile web3={web3} />} />
       </Routes>
     </div>
