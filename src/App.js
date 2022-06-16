@@ -42,13 +42,15 @@ function App() {
   return (
     <div className="App">
       <Header isLogin={isLogin} connectWallet={connectWallet} account={account} />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route exact path="/list" element={<Explore web3={web3} nfts={nfts} setNfts={setNfts} />} />
-        <Route path="/list/:tokenId" element={<NftCardDetail web3={web3} nfts={nfts} />} />
-        <Route path="/create" element={<Create account={account} web3={web3} />} />
-        <Route path="/profile" element={<Profile web3={web3} nfts={nfts} setNfts={setNfts} account={account} />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/list" element={<Explore web3={web3} nfts={nfts} setNfts={setNfts} />} />
+          <Route path="/list/:tokenId" element={<NftCardDetail web3={web3} nfts={nfts} />} />
+          <Route path="/create" element={<Create account={account} web3={web3} />} />
+          <Route path="/profile" element={<Profile web3={web3} nfts={nfts} setNfts={setNfts} account={account} />} />
+        </Routes>
+      </div>
     </div>
   );
 }

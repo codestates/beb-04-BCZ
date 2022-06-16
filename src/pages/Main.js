@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 
 function Main() {
-  const moveExplore = () => {
-    window.location.href = "/list";
-  };
-
   return (
     <div className="Main">
       <h1>Main</h1>
@@ -18,9 +14,9 @@ function Main() {
         <div className="main-button">
           <ul>
             <li>
-              {/* <Link to="/list"> */}
-              <button onClick={moveExplore}>Explore</button>
-              {/* </Link> */}
+              <Link to="/list">
+                <button>Explore</button>
+              </Link>
             </li>
             <li>
               <Link to="/create">

@@ -3,10 +3,6 @@ import { NavLink } from "react-router-dom";
 import "../App.css";
 
 export default function Header({ isLogin, connectWallet, account }) {
-  const moveExplore = () => {
-    window.location.href = "/list";
-  };
-
   return (
     <div id="Navbar">
       <nav id="nav-list">
@@ -16,9 +12,9 @@ export default function Header({ isLogin, connectWallet, account }) {
           </NavLink>
         </li>
         <li>
-          {/* <NavLink to="/list"> */}
-          <button onClick={moveExplore}>Explore</button>
-          {/* </NavLink> */}
+          <NavLink to="/list">
+            <button>Explore</button>
+          </NavLink>
         </li>
         <li>
           <NavLink to="/create">
