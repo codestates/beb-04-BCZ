@@ -16,13 +16,12 @@ function Explore({ web3, nfts, setNfts }) {
         const totalSupply = await tokenContract.methods.totalSupply().call();
         setTotal(totalSupply);
 
-        let arr = [];
-        for (let i = 1; i <= totalSupply; i++) {
-          arr.push(i);
-        }
-
         // 리렌더링 될 때마다 totalSupply만큼 계속 state 값에 추가 되는 오류 방지
         if (nfts.length < totalSupply) {
+          let arr = [];
+          for (let i = 1; i <= totalSupply; i++) {
+            arr.push(i);
+          }
           for (let tokenId of arr) {
             let tokenURI = await tokenContract.methods.tokenURI(tokenId).call();
             setNfts((prevState) => {
@@ -46,6 +45,7 @@ function Explore({ web3, nfts, setNfts }) {
         <div id="asset-list-title">
           <p>Explore...</p>
         </div>
+        {console.log(`totalSupply: ${total}, nfts.length: ${nfts.length}`)}
         <div id="asset-totalNum">total: {total}</div>
         <div id="asset-list-content">
           <NftCardList nfts={nfts} web3={web3} limit={limit} page={page} />

@@ -11,13 +11,55 @@
   background: linear-gradient(90deg, rgb(109, 93, 254) 0%, rgba(73, 63, 252, 1) 100%);
   height: 60px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1rem;
 }
 
+#nav-logo {
+  margin-left: 1.2rem;
+}
+
 #nav-list {
-  display: flex;
+  margin-left: auto;
+}
+
+#nav-list > li {
+  float: left;
+  margin: 1rem;
+}
+
+#nav-list a {
+  text-decoration: none;
+  outline: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+#nav-list a:before {
+  content: "";
+  position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
+  background-color: #ffaa40;
+  height: 2px; /*밑줄 굵기*/
+
+  width: 0; /*초기에 보이지 않도록*/
+  bottom: 0; /*a태그 아래에 위치시키기*/
+  transition: 0.3s; /*애니메이션 동작 실행 시간 정의*/
+
+  /*가상 요소를 가운데로 이동시키기*/
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
+#nav-list a:hover:before {
+  width: 100%;
+  color: #ffaa40;
+}
+
+#nav-list .active {
+  color: #ffd900;
 }
 
 li {
@@ -26,8 +68,23 @@ li {
 
 .main-body {
   display: flex;
+  align-items: center;
+}
+
+.main-slick-img {
+  margin-top: 5rem;
+  margin-left: 20%;
+  width: 45%;
+}
+
+.main-button > ul {
+  margin-top: 5rem;
   justify-content: center;
   align-items: center;
+}
+
+.main-button li {
+  margin-bottom: 1rem;
 }
 
 #asset-list-title p {
