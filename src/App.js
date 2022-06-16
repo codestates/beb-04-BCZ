@@ -30,13 +30,15 @@ function App() {
 
   // 메타마스크 지갑과 연결
   const connectWallet = async () => {
-    // 메타마스크 지갑과 연결된 계정 정보를 받는 JSON-RPC Call API
-    let accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-
-    setAccount(accounts[0]);
-    setIsLogin(true);
+    if (isLogin) {
+      alert(`연결된 계정: ${account}`);
+    } else {
+      let accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(accounts[0]);
+      setIsLogin(true);
+    }
   };
 
   return (
