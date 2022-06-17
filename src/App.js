@@ -14,6 +14,8 @@ function App() {
   const [web3, setWeb3] = useState();
   const [nfts, setNfts] = useState([]);
   const [isLogin, setIsLogin] = useState(false); // Profile에 필요
+  const [page, setPage] = useState(1); // 페이지네이션 -> Explore, Profile
+  const limit = 8; // 페이지네이션 -> Explore, Profile
 
   // web3 객체 생성
   useEffect(() => {
@@ -30,13 +32,15 @@ function App() {
 
   // 메타마스크 지갑과 연결
   const connectWallet = async () => {
-    // 메타마스크 지갑과 연결된 계정 정보를 받는 JSON-RPC Call API
-    let accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-
-    setAccount(accounts[0]);
-    setIsLogin(true);
+    if (isLogin) {
+      alert(`연결된 계정: ${account}`);
+    } else {
+      let accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(accounts[0]);
+      setIsLogin(true);
+    }
   };
 
   return (
@@ -45,10 +49,10 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/list" element={<Explore web3={web3} nfts={nfts} setNfts={setNfts} />} />
+          <Route path="/list" element={<Explore web3={web3} nfts={nfts} setNfts={setNfts} limit={limit} page={page} setPage={setPage} />} />
           <Route path="/list/:tokenId" element={<NftCardDetail web3={web3} nfts={nfts} />} />
           <Route path="/create" element={<Create account={account} web3={web3} />} />
-          <Route path="/profile" element={<Profile web3={web3} nfts={nfts} setNfts={setNfts} account={account} />} />
+          <Route path="/profile" element={<Profile web3={web3} nfts={nfts} setNfts={setNfts} account={account} limit={limit} page={page} setPage={setPage} />} />
         </Routes>
       </div>
     </div>

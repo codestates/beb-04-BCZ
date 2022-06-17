@@ -9,9 +9,9 @@ export default function Nft({ nft, idx }) {
   };
 
   return (
-    <div className="nft" onClick={handleCardClick}>
-      <img className="nft-img" alt={`Img ${tokenId}`} src={tokenURI} width={300} />
-      id: {tokenId} ---- <span> name: qwerty</span>
+    <div className="nft-card" onClick={handleCardClick}>
+      <div className="nft-card-title">#{tokenId} NAME : qwerty</div>
+      <img className="nft-card-img" alt={`Img ${tokenId}`} src={tokenURI} />
     </div>
   );
 }
