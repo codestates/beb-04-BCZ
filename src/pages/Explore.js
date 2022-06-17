@@ -4,10 +4,8 @@ import Pagination from "../components/Pagination";
 import erc721Abi from "../erc721Abi";
 import { erc721Addr } from "../erc721Addr";
 
-function Explore({ web3, nfts, setNfts }) {
+function Explore({ web3, nfts, setNfts, limit, page, setPage }) {
   const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
-  const limit = 8;
 
   useEffect(() => {
     const getNfts = async () => {

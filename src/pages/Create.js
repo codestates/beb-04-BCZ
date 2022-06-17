@@ -24,9 +24,7 @@ function Create({ account, web3 }) {
       // console.log("account = " + account);
       // console.log("token_url = " + createForm.token_url);
       // console.log("tokenURL = " + tokenURL);
-      tokenContract.methods
-        .mintNFT(account, createForm.token_url)
-        .send({ from: account });
+      tokenContract.methods.mintNFT(account, createForm.token_url).send({ from: account });
       const totalSupply = await tokenContract.methods.totalSupply().call();
       // console.log("totalSupply = " + totalSupply);
     } catch (error) {
@@ -50,39 +48,16 @@ function Create({ account, web3 }) {
     <div>
       <nav>
         <div>
-          <input
-            type="file"
-            id="fileId"
-            name="fileId"
-            onChange={onChangeCreateForm}
-          />
+          <input type="file" id="fileId" name="fileId" onChange={onChangeCreateForm} />
         </div>
         <div>
-          <input
-            type="text"
-            id="token_url"
-            name="token_url"
-            placeholder="사진 url입력"
-            onChange={onChangeCreateForm}
-          ></input>
+          <input type="text" id="token_url" name="token_url" placeholder="사진 url입력" onChange={onChangeCreateForm}></input>
         </div>
         <div>
-          <input
-            id="nftId"
-            type="text"
-            name="nftId"
-            placeholder="NFT-NAME 입력"
-            onChange={onChangeCreateForm}
-          ></input>
+          <input id="nftId" type="text" name="nftId" placeholder="NFT-NAME 입력" onChange={onChangeCreateForm}></input>
         </div>
         <div>
-          <input
-            id="nftDescription"
-            type="text"
-            name="nftDescription"
-            placeholder="Description 입력"
-            onChange={onChangeCreateForm}
-          ></input>
+          <input id="nftDescription" type="text" name="nftDescription" placeholder="Description 입력" onChange={onChangeCreateForm}></input>
         </div>
         <button onClick={onClickMint}>만들기!</button>
       </nav>
