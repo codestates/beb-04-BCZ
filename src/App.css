@@ -169,3 +169,39 @@ li {
   background: antiquewhite;
   padding-top: 3px;
 }
+
+.nft-detail-container {
+  overflow: hidden;
+  margin-bottom: 6rem;
+}
+
+.nft-detail-back {
+  margin-top: 5%;
+  margin-left: 5%;
+  /* justify-content: left; */
+  /* justify-items: left; */
+  float: left;
+}
+
+.nft-detail-back:active {
+  box-shadow: 3px 3px 3px black;
+  transition-duration: 0.3s;
+  border-radius: 20%;
+}
+
+.nft-detail-body {
+  /* margin-top: 1%; */
+  margin: 0 15%;
+  padding-top: 10%;
+  display: flex;
+}
+
+.nft-detail-img {
+  padding-left: 5%;
+  width: 50%;
+}
+
+.nft-detail-info {
+  width: 40%;
+  margin-left: 5%;
+}
