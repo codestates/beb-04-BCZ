@@ -1,12 +1,10 @@
 import styled from "styled-components";
-// import { useState, useEffect } from "react";
 
 function Pagination({ total, limit, page, setPage }) {
   const numPages = Math.ceil(total / limit);
 
   return (
     <>
-      {/* <p>page</p> */}
       <Nav>
         <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
           &lt;
