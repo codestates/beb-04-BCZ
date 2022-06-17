@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { RiArrowLeftCircleFill } from "react-icons/ri";
+import { erc721Addr } from "../erc721Addr";
 // NFT 카드의 상세 페이지
 function NftCardDetail({ nfts, web3, match }) {
   const navigate = useNavigate();
@@ -18,10 +19,18 @@ function NftCardDetail({ nfts, web3, match }) {
         </div>
         <div className="nft-detail-info">
           <h1>#{nft.tokenId} NAME</h1>
-          <p>Owned by:</p>
-          <p>Description:</p>
-          <p>Contract Address:</p>
-          <p>Blockchain: Ethereum</p>
+          <p>
+            <b>Owned by</b> | {nft.tokenOwner}
+          </p>
+          <p>
+            <b>Description</b> |
+          </p>
+          <p>
+            <b>Contract Address</b> | {erc721Addr}
+          </p>
+          <p>
+            <b>Blockchain</b> | Ethereum
+          </p>
         </div>
       </div>
       {/* <span className="asset-name">{asset.name}</span>
