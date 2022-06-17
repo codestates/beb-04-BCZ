@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NftCard from "./NftCard";
 
 function NftCardList({ nfts, web3, limit, page }) {

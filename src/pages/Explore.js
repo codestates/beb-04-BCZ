@@ -20,10 +20,12 @@ function Explore({ web3, nfts, setNfts, limit, page, setPage }) {
           for (let i = 1; i <= totalSupply; i++) {
             arr.push(i);
           }
+
           for (let tokenId of arr) {
+            let tokenOwner = await tokenContract.methods.ownerOf(tokenId).call();
             let tokenURI = await tokenContract.methods.tokenURI(tokenId).call();
             setNfts((prevState) => {
-              return [...prevState, { tokenId, tokenURI }];
+              return [...prevState, { tokenOwner, tokenId, tokenURI }];
             });
           }
         }
@@ -43,7 +45,8 @@ function Explore({ web3, nfts, setNfts, limit, page, setPage }) {
         <div id="asset-list-title">
           <p>Explore...</p>
         </div>
-        {console.log(`totalSupply: ${total}, nfts.length: ${nfts.length}`)}
+        {/* {console.log(`totalSupply: ${total}, nfts.length: ${nfts.length}`)}
+        {console.log("nfts: ", nfts)} */}
         <div id="asset-totalNum">total: {total}</div>
         <div id="asset-list-content">
           <NftCardList nfts={nfts} web3={web3} limit={limit} page={page} />

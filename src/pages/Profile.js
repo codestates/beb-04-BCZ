@@ -29,7 +29,7 @@ function Profile({ account, isLogin, web3, setNfts, nfts, limit, page, setPage }
         console.log("tokenOwner : " + tokenOwner.toUpperCase());
         console.log("account :    " + account.toUpperCase());
 
-        if (tokenOwner.toUpperCase() == account.toUpperCase()) {
+        if (tokenOwner.toUpperCase() === account.toUpperCase()) {
           console.log("일치!");
 
           let tokenURI = await tokenMethods.tokenURI(tokenId).call();
