@@ -52,8 +52,38 @@
   transform: translateX(-50%);
 }
 
-/*태그가 호버링 되면 가상 요소의 크기를 100%로 키우기*/
 #nav-list a:hover:before {
+  width: 100%;
+  color: #ffaa40;
+}
+
+#nav-list button {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  color: #f1f1f1;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+#nav-list button:before {
+  content: "";
+  position: absolute;
+  background-color: #ffaa40;
+  height: 2px;
+
+  width: 0;
+  bottom: 0;
+  transition: 0.3s;
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#nav-list button:hover:before {
   width: 100%;
   color: #ffaa40;
 }

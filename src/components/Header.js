@@ -21,7 +21,7 @@ export default function Header({ isLogin, connectWallet, account }) {
           <NavLink to="/profile">Profile</NavLink>
         </li>
         <li>
-          <a onClick={() => connectWallet()}>Connect</a>
+          <button onClick={() => connectWallet()}>Connect</button>
           {/* // 연결된 계정 주소를 화면에 출력합니다 */}
         </li>
         {/* <li>연결된 계정 주소: {account}</li> */}
