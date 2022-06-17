@@ -7,32 +7,210 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#Navbar {
+  background: linear-gradient(90deg, rgb(109, 93, 254) 0%, rgba(73, 63, 252, 1) 100%);
+  height: 60px;
   display: flex;
-  flex-direction: column;
+  font-size: 1rem;
+}
+
+#nav-logo {
+  margin-left: 1.2rem;
+}
+
+#nav-list {
+  margin-left: auto;
+}
+
+#nav-list > li {
+  float: left;
+  margin: 1rem;
+}
+
+#nav-list a {
+  text-decoration: none;
+  outline: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+#nav-list a:before {
+  content: "";
+  position: absolute; /*부모 요소에는 position: relative를 주어야 한다.*/
+  background-color: #ffaa40;
+  height: 2px; /*밑줄 굵기*/
+
+  width: 0; /*초기에 보이지 않도록*/
+  bottom: 0; /*a태그 아래에 위치시키기*/
+  transition: 0.3s; /*애니메이션 동작 실행 시간 정의*/
+
+  /*가상 요소를 가운데로 이동시키기*/
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#nav-list a:hover:before {
+  width: 100%;
+  color: #ffaa40;
+}
+
+#nav-list button {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  color: #f1f1f1;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+#nav-list button:before {
+  content: "";
+  position: absolute;
+  background-color: #ffaa40;
+  height: 2px;
+
+  width: 0;
+  bottom: 0;
+  transition: 0.3s;
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#nav-list button:hover:before {
+  width: 100%;
+  color: #ffaa40;
+}
+
+#nav-list .active {
+  color: #ffd900;
+}
+
+li {
+  list-style: none;
+}
+
+.main-body {
+  display: flex;
   align-items: center;
+}
+
+.main-slick-img {
+  margin-top: 5rem;
+  margin-left: 20%;
+  width: 45%;
+}
+
+.main-button > ul {
+  margin-top: 5rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.main-button li {
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#asset-list-title p {
+  margin-left: 1.66%;
+  font-size: 23px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 20px;
+  width: 30%;
+}
+
+#asset-list-content {
+  margin-left: 5%;
+  border-bottom: 2px solid #f1f1f1;
+  width: 90%;
+}
+
+.nft-list-container {
+  width: 70%;
+  margin: auto;
+  overflow: hidden;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.nft-list {
+  width: 100%;
+  height: auto;
+}
+
+.nft-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nft-card {
+  width: 22%; /* (23*4 + 1*8) = 100% */
+  margin: 1.5%; /* (1.66*6 + 30*3) = 100% */
+  float: left; /*이미지간 공백 제거*/
+}
+
+.nft-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 3px;
+  background: antiquewhite;
+  padding-top: 3px;
+}
+
+.nft-detail-container {
+  overflow: hidden;
+  margin-bottom: 6rem;
+}
+
+.nft-detail-back {
+  margin-top: 5%;
+  margin-left: 5%;
+  /* justify-content: left; */
+  /* justify-items: left; */
+  float: left;
+}
+
+.nft-detail-back:active {
+  box-shadow: 3px 3px 3px black;
+  transition-duration: 0.3s;
+  border-radius: 20%;
+}
+
+.nft-detail-body {
+  /* margin-top: 1%; */
+  margin: 0 15%;
+  padding-top: 10%;
+  display: flex;
+}
+
+.nft-detail-img {
+  padding-left: 4%;
+  width: 50%;
+}
+
+.nft-detail-info {
+  width: 42%;
+  margin-left: 4%;
+}
+
+.nft-detail-info > h1 {
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid #f1f1f1;
+}
+
+.nft-detail-info > p {
+  float: left;
 }
